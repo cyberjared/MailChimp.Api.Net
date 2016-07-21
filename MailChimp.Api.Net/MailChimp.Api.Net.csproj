@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{2070A49B-55DA-4C8C-933E-811FADFED996}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MailChimp.Api.Net</RootNamespace>
     <AssemblyName>MailChimp.Api.Net</AssemblyName>
@@ -115,10 +115,10 @@
     <Compile Include="Domain\Feedback\RootFeedback.cs" />
     <Compile Include="Domain\Lists\AbuseReport.cs" />
     <Compile Include="Domain\Lists\Category.cs" />
+    <Compile Include="Domain\Lists\Interest.cs" />
     <Compile Include="Domain\Lists\Goal.cs" />
     <Compile Include="Domain\Lists\History.cs" />
-    <Compile Include="Domain\Lists\Interest.cs" />
-    <Compile Include="Domain\Lists\Interests.cs" />
+    <Compile Include="Domain\Lists\InterestCategory.cs" />
     <Compile Include="Domain\Lists\LastNote.cs" />
     <Compile Include="Domain\Lists\MCClient.cs" />
     <Compile Include="Domain\Lists\ListsActivity.cs" />
@@ -137,7 +137,7 @@
     <Compile Include="Domain\Lists\RootAbuseReport.cs" />
     <Compile Include="Domain\Lists\RootGoal.cs" />
     <Compile Include="Domain\Lists\RootInterest.cs" />
-    <Compile Include="Domain\Lists\RootListsCategory.cs" />
+    <Compile Include="Domain\Lists\RootListsInterestCategory.cs" />
     <Compile Include="Domain\Lists\RootListsClient.cs" />
     <Compile Include="Domain\Lists\RootListsActivity.cs" />
     <Compile Include="Domain\Lists\RootListsGrowth.cs" />
@@ -178,10 +178,13 @@
     <Compile Include="Domain\Reports\Unsubscribed.cs" />
     <Compile Include="Domain\Reports\UrlsClicked.cs" />
     <Compile Include="Domain\ResultWrapper.cs" />
+    <Compile Include="Domain\TemplateFolders\RootTemplateFolder.cs" />
+    <Compile Include="Domain\TemplateFolders\TemplateFolder.cs" />
     <Compile Include="Domain\Templates\RootTemplate.cs" />
     <Compile Include="Domain\Templates\Template.cs" />
     <Compile Include="Enum\CampaignType.cs" />
     <Compile Include="Enum\CommandProperty.cs" />
+    <Compile Include="Enum\InterestCategoryType.cs" />
     <Compile Include="Enum\ListVisibility.cs" />
     <Compile Include="Enum\MergeFieldType.cs" />
     <Compile Include="Enum\Method.cs" />
@@ -190,10 +193,9 @@
     <Compile Include="Enum\TargetTypes.cs" />
     <Compile Include="ErrorMessages\MailChimpExceptionMessage.cs" />
     <Compile Include="Helper\BaseOperation.cs" />
-    <Compile Include="Helper\BundleCreation.cs" />
-    <Compile Include="Helper\Class1.cs" />
     <Compile Include="Helper\FileDownloader.cs" />
     <Compile Include="Helper\FileParser.cs" />
+    <Compile Include="Helper\MD5Hash.cs" />
     <Compile Include="Helper\RetryManager.cs" />
     <Compile Include="Mapper\EnumMapper.cs" />
     <Compile Include="Program.cs" />
@@ -211,7 +213,6 @@
     <Compile Include="Services\Automation\MCAutomationsEmailsQueue.cs" />
     <Compile Include="Services\Automation\MCAutomationsOverview.cs" />
     <Compile Include="Services\Automation\MCAutomationsRemoveSubscriber.cs" />
-    <Compile Include="Services\BatchOperation\BatchOperation.cs" />
     <Compile Include="Services\BatchOperation\MailChimpBatch.cs" />
     <Compile Include="Services\BatchOperation\MCBatch.cs" />
     <Compile Include="Services\Campaigns\MailChimpCampaigns.cs" />
@@ -249,6 +250,9 @@
     <Compile Include="Services\Reports\MCReportsSubReport.cs" />
     <Compile Include="Services\Reports\MCReportsUnsubscribes.cs" />
     <Compile Include="Services\Reports\MCReportsOverview.cs" />
+    <Compile Include="Services\TemplateFolders\MailChimpTemplateFolders.cs" />
+    <Compile Include="Services\TemplateFolders\MCTemplateFolderOverview.cs" />
+    <Compile Include="Services\Templates\MCTemplatesOverview.cs" />
     <Compile Include="Services\Templates\MailChimpTemplates.cs" />
   </ItemGroup>
   <ItemGroup>
