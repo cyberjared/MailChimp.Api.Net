@@ -14,6 +14,5 @@ namespace MailChimp.Api.Net.Domain.Lists
     public Options options { get; set; }
     public string list_id { get; set; }
     public List<Link> _links { get; set; }
-    public List<string> static_segment { get; set; }
   }
 }

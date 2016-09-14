@@ -30,9 +30,7 @@ namespace MailChimp.Api.Net.Services
       }
       catch (NullReferenceException)
       {
-        string message =
-          String.Format(
-            "MailChimp API Key missing! To resolve Add a key named 'MailChimpApiKey' in your config and SET its value with your mailchimp API key!");
+        string message = "MailChimp API Key missing! To resolve Add a key named \'MailChimpApiKey\' in your config and SET its value with your mailchimp API key!";
         throw new MailChimpExceptions(message);
       }
       catch (Exception ex)
