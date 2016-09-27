@@ -51,29 +51,55 @@ namespace MailChimp.Api.Net.Services.Campaigns
 
     /// <summary>
     /// Create a new campaign
-    /// <param name="campaignType">Possible Value : regular, plaintext, absplit, rss, variate </param>
-    /// <param name="CampaignRecipient"></param>
-    /// <param name="campaignTracking"></param>
-    /// <param name="campaignTracking"></param>
+    /// <param name="type">Possible Value : regular, plaintext, absplit, rss, variate </param>
+    /// <param name="recipients"></param>
+    /// <param name="settings"></param>
+    /// <param name="tracking"></param>
     /// </summary>
-    internal async Task<dynamic> CreateCampaignAsync(CampaignType campaignType,
-                                                Recipients CampaignRecipient,
-                                                Settings campaignSettings,
-                                                Tracking campaignTracking)
+    internal async Task<dynamic> CreateCampaignAsync(CampaignType type,
+                                                Recipients recipients,
+                                                Settings settings,
+                                                Tracking tracking)
     {
       string endpoint = Authenticate.EndPoint(TargetTypes.campaigns, SubTargetType.not_applicable,
                                               SubTargetType.not_applicable);
 
       Campaign campaignObject = new Campaign()
         {
-          type = campaignType.ToString(),
-          recipients = CampaignRecipient,
-          settings = campaignSettings,
-          tracking = campaignTracking
-        };
+          type = type.ToString(),
+          recipients = recipients,
+          settings = settings,
+          tracking = tracking
+      };
 
       return await BaseOperation.PostAsync<Campaign>(endpoint, campaignObject);
     }
+
+    /// <summary>
+    /// Update some or all of the settings for a specific campaign.
+    /// <param name="campaign_id">A string that uniquely identifies this campaign.</param>
+    /// <param name="recipients">List settings for the campaign.</param>
+    /// <param name="settings">The settings for your campaign, including subject, from name, reply-to address, and more.</param>
+    /// <param name="tracking">The tracking options for a campaign.</param>
+    /// </summary>
+    internal async Task<dynamic> UpdateCampaignAsync(string campaign_id,
+                                              Recipients recipients,
+                                              Settings settings,
+                                              Tracking tracking)
+    {
+      string endpoint = Authenticate.EndPoint(TargetTypes.campaigns, SubTargetType.not_applicable, SubTargetType.not_applicable, campaign_id);
+
+      Campaign campaignObject = new Campaign()
+      {
+        id = campaign_id,
+        recipients = recipients,
+        settings = settings,
+        tracking = tracking
+      };
+
+      return await BaseOperation.PatchAsync<Campaign>(endpoint, campaignObject);
+    }
+
 
 
     /// <summary>

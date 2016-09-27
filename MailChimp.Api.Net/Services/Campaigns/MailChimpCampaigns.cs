@@ -37,20 +37,34 @@ namespace MailChimp.Api.Net.Services.Campaigns
 
     /// <summary>
     /// Create a new campaign
-    /// <param name="campaignType">Possible Value : regular, plaintext, absplit, rss, variate </param>
-    /// <param name="CampaignRecipient"></param>
-    /// <param name="campaignTracking"></param>
-    /// <param name="campaignTracking"></param>
+    /// <param name="type">Possible Value : regular, plaintext, absplit, rss, variate </param>
+    /// <param name="recipients">List settings for the campaign.</param>
+    /// <param name="settings">The settings for your campaign, including subject, from name, reply-to address, and more.</param>
+    /// <param name="tracking">The tracking options for a campaign.</param>
     /// </summary>
-    public async Task<dynamic> CreateCampaignAsync(CampaignType campaignType,
-                                              Recipients CampaignRecipient,
-                                              Settings campaignSettings,
-                                              Tracking campaignTracking)
+    public async Task<dynamic> CreateCampaignAsync(CampaignType type,
+                                              Recipients recipients,
+                                              Settings settings,
+                                              Tracking tracking)
     {
-      return await overview.CreateCampaignAsync(campaignType, CampaignRecipient, campaignSettings, campaignTracking);
+      return await overview.CreateCampaignAsync(type, recipients, settings, tracking);
     }
 
-
+    /// <summary>
+    /// Update some or all of the settings for a specific campaign.
+    /// <param name="campaign_id">A string that uniquely identifies this campaign.</param>
+    /// <param name="recipients">List settings for the campaign.</param>
+    /// <param name="settings">The settings for your campaign, including subject, from name, reply-to address, and more.</param>
+    /// <param name="tracking">The tracking options for a campaign.</param>
+    /// </summary>
+    public async Task<dynamic> UpdateCampaignAsync(string campaign_id,
+                                              Recipients recipients,
+                                              Settings settings,
+                                              Tracking tracking)
+    {
+      return await overview.UpdateCampaignAsync(campaign_id,  recipients, settings, tracking);
+    }
+    
     /// <summary>
     /// Get all campaigns
     /// </summary>
